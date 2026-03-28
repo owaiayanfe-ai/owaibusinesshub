@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="OWAI Business Hub - Your One-Stop Printing & Design Solution">
+    <meta name="author" content="OWAI Business Hub">
+    <title>OWAI Business Hub | Printing & Design Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+            color: #fff;
+            padding: 40px 15px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1em;
+            color: #ddd;
+        }
+
+        nav {
+            background: #333;
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 20px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #00bcd4;
+            border-bottom: 2px solid #00bcd4;
+        }
+
+        section {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #000;
+            border-bottom: 3px solid #00bcd4;
+            padding-bottom: 10px;
+        }
+
+        /* Services Section */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h3 {
+            color: #00bcd4;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        .card .price {
+            color: #000;
+            font-weight: bold;
+            margin-top: 10px;
+            font-size: 1.1em;
+        }
+
+        /* Portfolio/Gallery Section */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            height: 250px;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            opacity: 0.8;
+        }
+
+        .gallery-item-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Testimonials Section */
+        .testimonials-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #00bcd4;
+        }
+
+        .testimonial-card p {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: #000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .star-rating {
+            color: #ffc107;
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: #f9f9f9;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .contact-box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-box h3 {
+            color: #00bcd4;
+            margin-bottom: 15px;
+        }
+
+        .contact-box p {
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .contact-box a {
+            color: #00bcd4;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-box a:hover {
+            text-decoration: underline;
+        }
+
+        form {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin-top: 30px;
+        }
+
+        form input,
+        form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            font-family: Arial, sans-serif;
+        }
+
+        form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        form input:focus,
+        form textarea:focus {
+            outline: none;
+            border-color: #00bcd4;
+            box-shadow: 0 0 5px rgba(0, 188, 212, 0.3);
+        }
+
+        form button {
+            background: #00bcd4;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        form button:hover {
+            background: #0097a7;
+        }
+
+        /* Error and Success Messages */
+        .error-message {
+            color: #d32f2f;
+            font-size: 0.9em;
+            margin-top: -10px;
+            margin-bottom: 10px;
+            display: none;
+        }
+
+        .success-message {
+            color: #388e3c;
+            padding: 15px;
+            border-radius: 5px;
+            background: #c8e6c9;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        /* Back to Top Button */
+        #back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #00bcd4;
+            color: white;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            z-index: 99;
+            transition: background 0.3s ease;
+            font-size: 1.2em;
+            width: 50px;
+            height: 50px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        #back-to-top:hover {
+            background: #0097a7;
+        }
+
+        footer {
+            background: #000;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        .social-links {
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            color: #00bcd4;
+            margin: 0 10px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .social-links a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            section {
+                padding: 25px 15px;
+            }
+
+            nav a {
+                margin: 0 10px;
+                font-size: 0.9em;
+            }
+
+            .services,
+            .gallery,
+            .testimonials-container {
+                grid-template-columns: 1fr;
+            }
+
+            #back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>OWAI Business Hub</h1>
+    <p>Your One-Stop Printing & Design Solution</p>
+</header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#services">Services</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<section id="home">
+    <h2>Welcome to OWAI Business Hub</h2>
+    <p>We provide high-quality printing, professional design services, and large-scale photocopy solutions for businesses and individuals. With over 10 years of experience, we're committed to delivering excellence in every project.</p>
+</section>
+
+<section id="services">
+    <h2>Our Services</h2>
+    <div class="services">
+        <div class="card">
+            <h3>Flyer Design</h3>
+            <p>Professional flyer designs tailored to your business needs. Eye-catching layouts that capture attention.</p>
+            <p class="price">From ₦5,000</p>
+        </div>
+        <div class="card">
+            <h3>Logo Creation</h3>
+            <p>Custom logo designs that represent your brand identity and stand out in the market.</p>
+            <p class="price">From ₦15,000</p>
+        </div>
+        <div class="card">
+            <h3>Photocopy Services</h3>
+            <p>High-quality photocopying for documents, reports, and large-scale projects at competitive rates.</p>
+            <p class="price">₦50/page</p>
+        </div>
+        <div class="card">
+            <h3>Passport Printing</h3>
+            <p>Professional passport-size photo printing with quick turnaround times.</p>
+            <p class="price">From ₦2,000</p>
+        </div>
+        <div class="card">
+            <h3>Typing & Editing</h3>
+            <p>Professional document typing and editing services for academic and business documents.</p>
+            <p class="price">From ₦1,000/page</p>
+        </div>
+    </div>
+</section>
+
+<section id="portfolio">
+    <h2>Portfolio & Gallery</h2>
+    <p>Check out some of our recent projects and designs.</p>
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=250&fit=crop" alt="Flyer Design Project 1">
+            <div class="gallery-item-title">Business Flyer</div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1626924281481-c78ddb87c82e?w=400&h=250&fit=crop" alt="Logo Design Project">
+            <div class="gallery-item-title">Logo Design</div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1563062810-d4bfc67eb46e?w=400&h=250&fit=crop" alt="Branding Project">
+            <div class="gallery-item-title">Branding Package</div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=250&fit=crop" alt="Print Design">
+            <div class="gallery-item-title">Print Materials</div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop" alt="Corporate Design">
+            <div class="gallery-item-title">Corporate Design</div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1540575467063-178f50002cbc?w=400&h=250&fit=crop" alt="Event Poster">
+            <div class="gallery-item-title">Event Poster</div>
+        </div>
+    </div>
+</section>
+
+<section id="testimonials">
+    <h2>Testimonials</h2>
+    <p>What our satisfied customers say about us.</p>
+    <div class="testimonials-container">
+        <div class="testimonial-card">
+            <p>"OWAI Business Hub delivered my logo design beyond my expectations. The team was professional and responsive to feedback."</p>
+            <div class="testimonial-author">
+                <span class="star-rating">★★★★★</span>
+                <span>- Chioma A.</span>
+            </div>
+        </div>
+        <div class="testimonial-card">
+            <p>"Their printing quality is exceptional. I've been ordering flyers for my business for the past 2 years. Highly recommended!"</p>
+            <div class="testimonial-author">
+                <span class="star-rating">★★★★★</span>
+                <span>- Tunde M.</span>
+            </div>
+        </div>
+        <div class="testimonial-card">
+            <p>"Fast turnaround time and competitive pricing. The team really understands what businesses need. Great service!"</p>
+            <div class="testimonial-author">
+                <span class="star-rating">★★★★★</span>
+                <span>- Amina O.</span>
+            </div>
+        </div>
+        <div class="testimonial-card">
+            <p>"I used their typing and editing services for my academic work. Very professional and error-free. Worth every naira!"</p>
+            <div class="testimonial-author">
+                <span class="star-rating">★★★★★</span>
+                <span>- Emeka U.</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Contact Us</h2>
+    <div class="contact-info">
+        <div class="contact-box">
+            <h3>📞 Phone</h3>
+            <p><a href="tel:+2347053657779">0705-365-7779</a></p>
+        </div>
+        <div class="contact-box">
+            <h3>📧 Email</h3>
+            <p><a href="mailto:owaiayanfe@gmail.com">owaiayanfe@gmail.com</a></p>
+        </div>
+        <div class="contact-box">
+            <h3>🕐 Business Hours</h3>
+            <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+            <p>Saturday: 10:00 AM - 4:00 PM</p>
+            <p>Sunday: Closed</p>
+        </div>
+    </div>
+
+    <h3 style="margin-top: 40px; margin-bottom: 20px;">Send us a Message</h3>
+    <div class="success-message" id="successMessage">
+        ✓ Thank you! Your message has been sent successfully. We'll get back to you soon!
+    </div>
+    <form id="contact-form">
+        <input type="text" id="fullname" placeholder="Your Full Name" required>
+        <span class="error-message" id="nameError">Please enter a valid name</span>
+
+        <input type="email" id="email" placeholder="Your Email" required>
+        <span class="error-message" id="emailError">Please enter a valid email address</span>
+
+        <input type="text" id="subject" placeholder="Subject" required>
+        <span class="error-message" id="subjectError">Please enter a subject</span>
+
+        <textarea id="message" placeholder="Your Message" required></textarea>
+        <span class="error-message" id="messageError">Please enter your message</span>
+
+        <button type="submit">Send Message</button>
+    </form>
+</section>
+
+<footer>
+    <p>&copy; 2026 OWAI Business Hub. All rights reserved.</p>
+    <div class="social-links">
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+        <a href="#">Twitter</a>
+        <a href="#">LinkedIn</a>
+    </div>
+</footer>
+
+<!-- Back to Top Button -->
+<button id="back-to-top" title="Go to top">↑</button>
+
+<script>
+    // ============= FORM VALIDATION =============
+    const contactForm = document.getElementById('contact-form');
+    const successMessage = document.getElementById('successMessage');
+
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Get form values
+        const fullname = document.getElementById('fullname').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const subject = document.getElementById('subject').value.trim();
+        const message = document.getElementById('message').value.trim();
+
+        // Reset error messages
+        document.getElementById('nameError').style.display = 'none';
+        document.getElementById('emailError').style.display = 'none';
+        document.getElementById('subjectError').style.display = 'none';
+        document.getElementById('messageError').style.display = 'none';
+        successMessage.style.display = 'none';
+
+        // Validation variables
+        let isValid = true;
+
+        // Validate name
+        if (fullname === '' || fullname.length < 3) {
+            document.getElementById('nameError').style.display = 'block';
+            isValid = false;
+        }
+
+        // Validate email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            document.getElementById('emailError').style.display = 'block';
+            isValid = false;
+        }
+
+        // Validate subject
+        if (subject === '' || subject.length < 3) {
+            document.getElementById('subjectError').style.display = 'block';
+            isValid = false;
+        }
+
+        // Validate message
+        if (message === '' || message.length < 10) {
+            document.getElementById('messageError').style.display = 'block';
+            isValid = false;
+        }
+
+        // If all valid, show success message
+        if (isValid) {
+            successMessage.style.display = 'block';
+            contactForm.reset();
+            
+            // Optional: Log form data (in production, you'd send this to a server)
+            console.log({
+                name: fullname,
+                email: email,
+                subject: subject,
+                message: message
+            });
+
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 5000);
+        }
+    });
+
+    // ============= BACK TO TOP BUTTON =============
+    const backToTopBtn = document.getElementById('back-to-top');
+
+    // Show button when page is scrolled down
+    window.addEventListener('scroll', function() {
+        if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+            backToTopBtn.style.display = 'block';
+        } else {
+            backToTopBtn.style.display = 'none';
+        }
+    });
+
+    // Scroll to top smoothly when button is clicked
+    backToTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // ============= SMOOTH SCROLLING FOR NAV LINKS =============
+    document.querySelectorAll('nav a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
